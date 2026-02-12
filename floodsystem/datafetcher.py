@@ -36,7 +36,7 @@ def load(filename):
     return data
 
 
-def fetch_station_data(use_cache=True):
+def fetch_station_data(use_cache=False):
     """Fetch data from Environment agency for all active river level
     monitoring stations via a REST API and return retrieved data as a
     JSON object.

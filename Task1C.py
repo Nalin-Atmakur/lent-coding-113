@@ -14,6 +14,6 @@ def run_c():
 
     for s in list:
         output_c.append(s.name)  # append the station name to the output list
-    return print(output_c)
+    return print(sorted(output_c))
 
 run_c()

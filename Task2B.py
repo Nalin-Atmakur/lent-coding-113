@@ -7,7 +7,7 @@ def run():
     # Update latest level data for all stations
     update_water_levels(stations)
 
-    print([(x[0].name, x[1]) for x in flood.stations_level_over_threshold(stations, 1.6)])
+    print([(x[0].name, x[1]) for x in flood.stations_level_over_threshold(stations, 0.8)])
 
 
 if __name__ == "__main__":
