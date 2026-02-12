@@ -77,6 +77,7 @@ def rivers_by_station_number(stations, N):
                 break
 
         final_list = river_count_list + extra_rivers
+    return final_list
 
 def stations_by_town(stations):
     return dict(reduce(lambda d, s: (d[s.town].append(s), d)[1], stations, defaultdict(list)).items())
