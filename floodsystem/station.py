@@ -30,6 +30,13 @@ class MonitoringStation:
 
         self.latest_level = None
 
+    def typical_range_consistent(self):
+        return self.typical_range and self.typical_range[0] < self.typical_range[1]
+    
+    @staticmethod
+    def inconsistent_typical_range_stations(stations):
+        return list(filter(lambda x: not x.typical_range_consistent(), stations))
+
     def __repr__(self):
         d = "Station name:     {}\n".format(self.name)
         d += "   id:            {}\n".format(self.station_id)
