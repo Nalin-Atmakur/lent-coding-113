@@ -67,5 +67,5 @@ def test_stations_highest_rel_level_empty():
     result = stations_highest_rel_level(stations, 2)
     assert len(result) == 2
     assert s2 not in result
-    assert result[0][0] == s3
-    assert result[1][0] == s1
+    assert result[0] == s3
+    assert result[1] == s1
