@@ -49,3 +49,31 @@ def rivers_with_station(stations):
 def stations_by_river(stations):
     # append station to dict if river exists, else create new entry if river not added yet, using default dict
     return dict(sorted(reduce(lambda d, s: (d[s.river].append(s), d)[1], stations, defaultdict(list)).items(), key=lambda x: len(x[1]), reverse=True))
+
+
+def rivers_by_station_number(stations, N):
+    stations_dict = stations_by_river(stations)  #get the dictionary of rivers and their stations
+    
+    river_count_list = []  #create an empty list to store the output tuples
+    
+    for river in stations_dict: # iterate through each river in the dictionary
+        number_stations = len(stations_dict[river])  #replace the list
+        river_count_list.append((river, number_stations))  #append a tuple of river and number of stations to the list
+
+    river_count_list = sorted_by_key(river_count_list, 1, reverse=True)  #sort the list by number of stations in descending order
+    final_list = river_count_list  #initialize final_list as river_count_list
+    if N < len(river_count_list): #check if N is less than the length of the list
+
+        rest_of_list = river_count_list[N:] #create a new list with the elements from index N to the end of the list
+        river_count_list = river_count_list[0:N]  #slice the first N elements of the output list
+
+
+
+        extra_rivers = [] #create an empty list to store extra rivers with same number of stations as Nth river
+        for extra in rest_of_list:
+            if extra[1] == river_count_list[N-1][1]:
+                extra_rivers.append(extra)
+            else:
+                break
+
+        final_list = river_count_list + extra_rivers
