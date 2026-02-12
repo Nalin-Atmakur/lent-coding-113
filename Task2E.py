@@ -16,7 +16,7 @@ def run_e():
     update_water_levels(stations) #upload latest data of stations using this function before ordering and outputting highest five
     highest_five = stations_highest_rel_level(stations, 5)
 
-    for station_obj, water_level in highest_five: #iterating to get first entry of tuple in list of tuples
+    for station_obj in highest_five: #iterating through the highest five stations
 
         dates, levels = fetch_measure_levels(station_obj.measure_id, dt) #call the two lists the function returns, taking in that objects measure id and dt
         plot_water_levels(station_obj, dates, levels)

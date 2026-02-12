@@ -2,7 +2,7 @@ import pytest
 import math
 from floodsystem.geo import (haversine, stations_by_distance, 
                              stations_within_radius, rivers_with_station,
-                             stations_by_river)
+                             stations_by_river, stations_by_town)
 from floodsystem.station import MonitoringStation
 
 
@@ -94,7 +94,7 @@ def test_stations_by_river():
     assert s1 in grouped["River Thames"]
     assert s3 in grouped["River Thames"]
 
-'''
+
 def test_stations_by_town():
     s1 = create_test_station("Station1", (0.0, 0.0), "River A", "Oxford")
     s2 = create_test_station("Station2", (0.1, 0.0), "River B", "Cambridge")
@@ -131,4 +131,3 @@ def test_empty_station_list():
     
     sorted_stations = stations_by_distance(stations, (0.0, 0.0))
     assert len(sorted_stations) == 0
-'''
