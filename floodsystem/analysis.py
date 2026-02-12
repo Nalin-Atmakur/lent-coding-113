@@ -57,10 +57,10 @@ def get_standardised_risk(town_dict):
     return town_dict
 
 
-def towns_at_risk(town_dict, threshold):
-    return dict(filter(lambda x: x[1]>threshold, town_dict.items())) #filter towns with risk above threshold
+'''def towns_at_risk(town_dict, threshold):
+    return dict(filter(lambda x: x[1]>threshold, town_dict.items())) #filter towns with risk above threshold'''
 
-def calculate_z_scores(levels, reference=1.0):
+'''def calculate_z_scores(levels, reference=1.0):
     """Calculate z-scores (standard deviations above reference value).
     
     Args:
@@ -82,4 +82,4 @@ def calculate_z_scores(levels, reference=1.0):
         std_level = 1.0
         z_scores = np.array([]) #empty array if no numeric levels
     
-    return z_scores, mean_level, std_level 
+    return z_scores, mean_level, std_level '''
