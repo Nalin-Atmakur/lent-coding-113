@@ -32,3 +32,11 @@ def haversine(coord1, coord2):
     c = 2 * np.arctan2(np.sqrt(a), np.sqrt(1-a))
     d = R * c
     return float(d)
+
+def stations_within_radius(stations, centre, r):
+    stations_in_radius = [] #create an empty list to store stations within radius r
+    for station in stations:
+        distance = haversine(station.coord, centre) #calculate the distance between station and centre
+        if distance < r:
+            stations_in_radius.append(station) #append station to the list if distance is less than r
+    return stations_in_radius #return the list of stations within radius r
