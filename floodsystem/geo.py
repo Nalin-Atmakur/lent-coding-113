@@ -8,6 +8,8 @@ geographical data.
 
 from .utils import sorted_by_key  # noqa
 import numpy as np
+from functools import reduce
+from collections import defaultdict
 
 # Radius of earth in km
 R = 6371
@@ -40,3 +42,10 @@ def stations_within_radius(stations, centre, r):
         if distance < r:
             stations_in_radius.append(station) #append station to the list if distance is less than r
     return stations_in_radius #return the list of stations within radius r
+
+def rivers_with_station(stations):
+    return list(set([x.river for x in stations]))
+
+def stations_by_river(stations):
+    # append station to dict if river exists, else create new entry if river not added yet, using default dict
+    return dict(sorted(reduce(lambda d, s: (d[s.river].append(s), d)[1], stations, defaultdict(list)).items(), key=lambda x: len(x[1]), reverse=True))
