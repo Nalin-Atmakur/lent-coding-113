@@ -33,6 +33,10 @@ class MonitoringStation:
     def typical_range_consistent(self):
         return self.typical_range and self.typical_range[0] < self.typical_range[1]
     
+    def relative_water_level(self):
+        # get relative water level if consistent and latest_level has been succesfully fetched from api
+        return (self.latest_level-self.typical_range[0])/(self.typical_range[1]-self.typical_range[0]) if self.typical_range_consistent() and self.latest_level is not None else None
+    
     @staticmethod
     def inconsistent_typical_range_stations(stations):
         return list(filter(lambda x: not x.typical_range_consistent(), stations))
